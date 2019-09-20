@@ -1,0 +1,29 @@
+{
+  "name": "onepage",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack-dev-server",
+    "start": "webpack-dev-server --config webpack.dev.js",
+    "build": "webpack --config  webpack.prod.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "clean-webpack-plugin": "latest",
+    "fast-css-loader": "latest",
+    "fast-sass-loader": "latest",
+    "file-loader": "latest",
+    "html-webpack-plugin": "latest",
+    "mini-css-extract-plugin": "latest",
+    "optimize-css-assets-webpack-plugin": "latest",
+    "url-loader": "latest",
+    "webpack": "latest",
+    "webpack-cli": "latest",
+    "webpack-dev-server": "latest",
+    "webpack-merge": "latest"
+  },
+  "dependencies": {}
+}
