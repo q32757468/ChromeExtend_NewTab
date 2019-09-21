@@ -33,7 +33,6 @@ $(function () {
   {
     let flag = false;
     // bg.test();
-    console.log(bg);
     const ACO_button = $('.ACO_button');
     const ball = $('.ball');
     ACO_button.click(function () {
