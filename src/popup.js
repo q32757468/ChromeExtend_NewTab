@@ -29,8 +29,11 @@ $(function () {
 
 
   //开启跨域功能
+  var bg = chrome.extension.getBackgroundPage();
   {
     let flag = false;
+    // bg.test();
+    console.log(bg);
     const ACO_button = $('.ACO_button');
     const ball = $('.ball');
     ACO_button.click(function () {
@@ -40,8 +43,8 @@ $(function () {
       }
       else {
         ball.removeClass('open').addClass('close');
-
       }
+      bg.ACAO(flag);
     })
 
 
@@ -49,4 +52,3 @@ $(function () {
 
 })
 
-// 这个md5的函数不能放在jQuery里面，否则报错，原因未知
