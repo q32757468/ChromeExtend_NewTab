@@ -2,6 +2,64 @@ body {
   padding: 5px;
 }
 
+.ACObox {
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  $hg: 24px;
+  $wd: 50px;
+
+  .ACO_button {
+    // margin: 0 auto;
+    padding: 0.5px;
+    margin-top: 10px;
+    width: $wd;
+    height: $hg;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    border-radius: 16px;
+    -webkit-border-radius: 16px;
+    -moz-border-radius: 16px;
+    -ms-border-radius: 16px;
+    -o-border-radius: 16px;
+
+    .ball {
+      transition: transform .5s;
+      border-radius: 50%;
+      height: $hg;
+      width: $hg;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      -ms-border-radius: 50%;
+      -o-border-radius: 50%;
+      -webkit-transition: transform .5s;
+      -moz-transition: transform .5s;
+      -ms-transition: transform .5s;
+      -o-transition: transform .5s;
+    }
+
+    .open {
+      background-color: rgb(8, 194, 97);
+      // 这里要注意在使用sass进行减法计算的时候减号前面必须有空格
+      transform: translateX($wd - $hg);
+      -webkit-transform: translateX($wd - $hg);
+      -moz-transform: translateX($wd - $hg);
+      -ms-transform: translateX($wd - $hg);
+      -o-transform: translateX($wd - $hg);
+    }
+
+    .close {
+      background-color: #999999;
+      transform: translateX(0px);
+      -webkit-transform: translateX(0px);
+      -moz-transform: translateX(0px);
+      -ms-transform: translateX(0px);
+      -o-transform: translateX(0px);
+    }
+  }
+}
+
+
 .tranCon {
   margin: 10px 0;
   margin-bottom: 0;

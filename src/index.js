@@ -8,7 +8,7 @@ $(function () {
   //当背景图片加载完毕之后再进行显示，解决会闪一下的问题
   {
     window.defaBg = bgImg;
-    const showDefBg = function () {
+    window.showDefBg = function () {
       let bg = new Image();
       bg.src = window.defaBg;
       bg.onload = function () {
@@ -17,7 +17,6 @@ $(function () {
         })
       }
     }
-    showDefBg();
 
     window.showBg = function () {
       let bg = new Image();
@@ -29,10 +28,17 @@ $(function () {
         })
       }
     }
+
+    if (!localStorage.getItem('bg')) {
+      showDefBg();
+    }
+    else {
+      showBg();
+    }
   }
 
 
-  // 百度搜索
+  // 搜索
   {
     // 搜索部分
     const searchInput = $('.searchInput');
@@ -54,7 +60,7 @@ $(function () {
     searchInput.keyup(function (e) {
       if (e.keyCode == 13) {
         query = $(this).val();
-        window.open(`https://www.baidu.com/s?ie=UTF-8&wd=${query}`);
+        toResultPage(query);
       }
     })
 
@@ -89,9 +95,13 @@ $(function () {
           // 单击提示进行搜索
           tipItems.each((index, item) => {
             $(item).mousedown(function () {
-              window.open(`https://www.baidu.com/s?ie=UTF-8&wd=${$(this).text()}`);
+              const kw = $(this).text();
+              // window.open(`https://www.baidu.com/s?ie=UTF-8&wd=${$(this).text()}`);
+              toResultPage(kw);
             })
           })
+
+
 
           // 鼠标经过时的变化
           tipItems.each((index, item) => {
@@ -117,6 +127,20 @@ $(function () {
     })
 
 
+    //跳转到搜索界面
+    function toResultPage(keyWord) {
+      const activeIcon = $('.searchIconBox .active');
+      const iconName = activeIcon.attr('name');
+      if (iconName == 'baidu') {
+        window.open(`https://www.baidu.com/s?ie=UTF-8&wd=${keyWord}`);
+      }
+      else
+        if (iconName == 'google') {
+          window.open(`https://www.google.com/search?q=${keyWord}`);
+        }
+    }
+
+
     // 通过上下箭头来控制搜索框内容
     searchInput.keydown(function (e) {
       // 方向键下
@@ -140,6 +164,46 @@ $(function () {
         searchInput.val(tipItems.eq(tipIndex).text());
       }
     })
+
+    //选择搜索引擎
+    function chSearch() {
+      const searchIconBox = $('.searchIconBox');
+      const searchList = $('.searchList');
+      let flag = false;
+      searchIconBox.click(function (e) {
+        flag = !flag;
+        if (flag) {
+          searchIconBox.css({
+            'overflow': 'unset'
+          })
+        }
+        else {
+          searchIconBox.css({
+            'overflow': 'hidden'
+          })
+        }
+        e.stopImmediatePropagation();
+      })
+
+      //点击其他地方的时候自动隐藏
+      $(document).mouseup(function (e) {
+        if (!searchIconBox.is(e.target) && searchIconBox.has(e.target).length === 0) {
+          flag = false;
+          searchIconBox.css({
+            'overflow': 'hidden'
+          })
+        }
+      });
+
+      searchList.children().click(function () {
+        console.log($(this));
+        $(this).siblings().removeClass('active');
+        $(this).addClass('active');
+      })
+    }
+    chSearch();
+
+
   }
 
   // 实现快速导航列表

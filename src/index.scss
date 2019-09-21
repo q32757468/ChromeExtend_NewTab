@@ -67,10 +67,42 @@
    align-items: center;
    border-radius: 45px;
    position: relative;
+
+   .searchIconBox {
+     display: flex;
+     position: relative;
+     height: 20px;
+     overflow: hidden;
+
+     .searchList {
+       position: absolute;
+       display: flex;
+       flex-direction: column;
+
+       li {
+         margin-bottom: 10px;
+       }
+
+       .active {
+         order: -1;
+       }
+
+       .inactive {
+         order: 0;
+       }
+     }
+
+     .daosanjiao {
+       font-size: 2px;
+       padding: 0;
+       margin-left: 37px;
+       margin-top: 6px;
+     }
+   }
  }
 
  .searchInput {
-   padding-left: 2px;
+   padding-left: 10px;
    flex-grow: 1;
    height: 45px;
    background-color: rgba(0, 0, 0, 0);

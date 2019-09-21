@@ -1,0 +1,30 @@
+{
+  "id": "1428373",
+  "name": "谷歌插件",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "620076",
+      "name": "倒三角",
+      "font_class": "daosanjiao-copy",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "8034651",
+      "name": "百度",
+      "font_class": "baidu",
+      "unicode": "eb0a",
+      "unicode_decimal": 60170
+    },
+    {
+      "icon_id": "8419511",
+      "name": "谷歌搜索",
+      "font_class": "gugesousuo",
+      "unicode": "e6fd",
+      "unicode_decimal": 59133
+    }
+  ]
+}
