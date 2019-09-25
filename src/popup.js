@@ -29,10 +29,9 @@ $(function () {
 
 
   //开启跨域功能
-  var bg = chrome.extension.getBackgroundPage();
   {
+
     let flag = false;
-    // bg.test();
     const ACO_button = $('.ACO_button');
     const ball = $('.ball');
     ACO_button.click(function () {
@@ -46,8 +45,8 @@ $(function () {
       bg.ACAO(flag);
     })
 
-
   }
-
+  var bg = chrome.extension.getBackgroundPage();
+  console.log(bg);
 })
 

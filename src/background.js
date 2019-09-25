@@ -2,9 +2,13 @@
 
 chrome.contextMenus.create({
   title: "翻译:%s",
+  id: 1,
   contexts: ['selection'],
   onclick: function () {
     console.log('您点击了右键菜单！');
   }
 });
 
+function test() {
+  alert('我是background');
+}
