@@ -47,6 +47,6 @@ $(function () {
 
   }
   var bg = chrome.extension.getBackgroundPage();
-  console.log(bg);
+  // bg.test();
 })
 

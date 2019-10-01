@@ -224,6 +224,8 @@ $(function () {
       { 'url': 'https://www.huya.com', 'title': '虎牙', 'icon': require('./assets/siteIcons/huya.png') },
       { 'url': 'https://www.iconfont.cn/', 'title': '阿里巴巴矢量图标库', 'icon': require('./assets/siteIcons/ali.png') },
       { 'url': 'https://www.douyu.com', 'title': '斗鱼', 'icon': require('./assets/siteIcons/douyu.png') },
+      { 'url': 'https://www.douyu.com', 'title': '斗鱼', 'icon': require('./assets/siteIcons/douyu.png') },
+      { 'url': 'https://www.douyu.com', 'title': '斗鱼', 'icon': require('./assets/siteIcons/douyu.png') },
     ]
 
     // 大概思路就是通过将li元素添加到ul中，然后设定一个上限，如果超过了这个上限就再新建一个ul然后向新建的这个ul中添加后续的li，超过一定数量的li再次创建ul然后继续添加
