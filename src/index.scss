@@ -270,6 +270,7 @@
  }
 
  .addSiteBox {
+   border-radius: 50%;
    width: 400px;
    height: 300px;
    background-color: #fff;
@@ -290,30 +291,70 @@
    flex-direction: column;
    align-items: center;
    justify-content: space-around;
-   display: none;
+   //  display: none;
 
 
    .siteIconImg {
-     $diam: 70px;
+     $diam: 100px;
      width: $diam;
      height: $diam;
+     position: relative;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     box-sizing: border-box;
+     font-size: 50px;
+     line-height: $diam;
+     cursor: pointer;
+     border: 2px dashed #ccc;
      border-radius: 50%;
      -webkit-border-radius: 50%;
      -moz-border-radius: 50%;
      -ms-border-radius: 50%;
      -o-border-radius: 50%;
-     background-color: aquamarine;
+     //  background-color: aquamarine;
+
+     #uploadBt {
+       border: none;
+       position: absolute;
+       width: 100px;
+       height: 100px;
+       opacity: 0;
+       cursor: pointer;
+     }
    }
 
+
+   /* 修改placeholder的颜色 */
+   input:-moz-placeholder,
+   textarea:-moz-placeholder {
+     color: #ccc;
+   }
+
+   input:-ms-input-placeholder,
+   textarea:-ms-input-placeholder {
+     color: #ccc;
+   }
+
+   input::-webkit-input-placeholder,
+   textarea::-webkit-input-placeholder {
+     color: #ccc;
+   }
+
+
    input {
-     height: 20px;
+     border: none;
      outline: none;
-     border: 1px solid #999;
-     border-radius: 5px;
-     -webkit-border-radius: 5px;
-     -moz-border-radius: 5px;
-     -ms-border-radius: 5px;
-     -o-border-radius: 5px;
+     border-bottom: 1px solid #000;
+     text-align: center;
+   }
+
+   .siteTitle {
+     width: 130px;
+   }
+
+   .siteUrl {
+     width: 180px;
    }
 
    button {

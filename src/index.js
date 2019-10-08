@@ -68,6 +68,10 @@ $(function () {
     searchInput.on('input', function () {
       tipIndex = -1;
       let query = searchInput.val();
+      // 修复bug导致不能正确清空提示框
+      if (!query) {
+        query = ' ';
+      }
       let url = "https://suggestion.baidu.com/su?wd=" + query + "&ie=UTF-8&cb=";
       $.ajax({
         // 发送请求之前必须要对请求地址进行处理
@@ -96,7 +100,6 @@ $(function () {
           tipItems.each((index, item) => {
             $(item).mousedown(function () {
               const kw = $(this).text();
-              // window.open(`https://www.baidu.com/s?ie=UTF-8&wd=${$(this).text()}`);
               toResultPage(kw);
             })
           })
@@ -224,24 +227,26 @@ $(function () {
       { 'url': 'https://www.huya.com', 'title': '虎牙', 'icon': require('./assets/siteIcons/huya.png') },
       { 'url': 'https://www.iconfont.cn/', 'title': '阿里巴巴矢量图标库', 'icon': require('./assets/siteIcons/ali.png') },
       { 'url': 'https://www.douyu.com', 'title': '斗鱼', 'icon': require('./assets/siteIcons/douyu.png') },
-      { 'url': 'https://www.douyu.com', 'title': '斗鱼', 'icon': require('./assets/siteIcons/douyu.png') },
-      { 'url': 'https://www.douyu.com', 'title': '斗鱼', 'icon': require('./assets/siteIcons/douyu.png') },
     ]
 
     // 大概思路就是通过将li元素添加到ul中，然后设定一个上限，如果超过了这个上限就再新建一个ul然后向新建的这个ul中添加后续的li，超过一定数量的li再次创建ul然后继续添加
-    siteList.forEach((item, index) => {
-      liTemplate = `
+    function addToHtml() {
+      siteList.forEach((item, index) => {
+        liTemplate = `
           <li>
             <a class="quickIcon" href="${item.url}" style="background-image: url(${item.icon});"></a>
             <a class="quickTitle" href="${item.url}">${item.title}</a>
           </li>`;
-      if (!(index % 10)) {
-        quickBox.append(`<ul class="blcok${index / 10}"></ul>`);
-        quickOption.append(`<li></li>`);//增加滑动选项
-      }
-      quickBox.children().last().append(liTemplate);
-    });
+        if (!(index % 10)) {
+          quickBox.append(`<ul class="blcok${index / 10}"></ul>`);
+          quickOption.append(`<li></li>`);//增加滑动选项
+        }
 
+
+        quickBox.children().last().append(liTemplate);
+      });
+    }
+    addToHtml();
     // 为第一个选项添加cur样式
     quickOption.children().first().addClass('optionCur');
 
@@ -295,6 +300,15 @@ $(function () {
     })
 
 
+    function addSite() {
+      const cancle = $('.addSiteBox .cancle');
+      const addSiteBox = $('.addSiteBox');
+      cancle.click(function () {
+        addSiteBox.hide();
+
+      })
+    }
+    addSite();
 
 
 
