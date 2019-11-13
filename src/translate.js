@@ -31,6 +31,7 @@ let translate = function (q, cb) {
   });
 }
 
+//判断是中文还是英文
 function whichLang(str) {
   if (/.*[\u4e00-\u9fa5]+.*$/.test(str)) {
     return 'en'

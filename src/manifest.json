@@ -3,6 +3,11 @@
     "name": "new tab",
     "version": "1.0.0",
     "description": "一个小小的新标签页",
+    "icons": {
+        "16": "./assets/images/b88a75406eaf6c2f133482b0f4b56833.png",
+        "48": "./assets/images/b88a75406eaf6c2f133482b0f4b56833.png",
+        "128": "./assets/images/b88a75406eaf6c2f133482b0f4b56833.png"
+    },
     "chrome_url_overrides": {
         "newtab": "index.html"
     },
