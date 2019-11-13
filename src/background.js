@@ -39,9 +39,40 @@ function whichLang(str) {
   }
 }
 
-const testNum = 123;
 
-window.test = function () {
+window.test = function (testOption) {
   console.log("这是一个测试");
-  return testNum;
+  console.log(testOption);
+}
+
+
+
+window.addACAO = function () {
+  chrome.webRequest.onHeadersReceived.addListener(ACAOhandle, { urls: ["<all_urls>"] }, ["responseHeaders", "blocking"]);
+  console.log("跨域功能开启了");
+}
+
+window.removeACAO = function () {
+  chrome.webRequest.onHeadersReceived.removeListener(ACAOhandle);
+  console.log("跨域功能关闭了");
+}
+
+
+function ACAOhandle(details) {
+  var responseHeaders = details.responseHeaders;
+  var allowOriginHeader = responseHeaders.find(function (rh, index) {
+    if (rh.name === 'Access-Control-Allow-Origin') {
+      responseHeaders[index]['value'] = '*';
+      return true;
+    }
+  });
+  if (!allowOriginHeader) {
+    responseHeaders.push({
+      name: 'Access-Control-Allow-Origin',
+      value: '*'
+    });
+  }
+  return {
+    responseHeaders: responseHeaders
+  };
 }
