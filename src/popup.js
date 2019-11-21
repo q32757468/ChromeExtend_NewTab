@@ -16,20 +16,27 @@ bg.test("这是在popup页面中输入的东西");
   //一个就是因为Ajax和事件都是异步的，并且从结果来看不论怎么样的去调用函数按键事件都拿不到Ajax的值
   //最终的解决办法是通过改写Ajax的函数，使其在接收一个函数作为参数，在Ajax中调用这个函数来对返回的数据进行处理
 
-  tranCon.keyup(function (e) {
-    if (e.keyCode == 13) {
-      let searchText = tranCon.val();
-      translate(searchText, addToBox);
-    }
+  tranCon.on("input", function (e) {
+    let searchText = tranCon.val();
+    translate(searchText, addToBoxDebounce);
   })
 
-
+  const addToBoxDebounce = debounce(addToBox, 1000);
   function addToBox(res) {
-    console.log(res.trans_result[0].dst);
-    resultBox.text(res.trans_result[0].dst);
+    if (res.trans_result[0].dst) {
+      console.log(res);
+      resultBox.text(res.trans_result[0].dst);
+    }
   }
 }
 
+function debounce(func, wait) {
+  let timer;
+  return function (res) {
+    clearTimeout(timer);
+    timer = setTimeout(func, wait, res);
+  };
+}
 
 //开启跨域功能
 {
