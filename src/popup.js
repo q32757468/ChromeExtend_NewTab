@@ -17,11 +17,17 @@ bg.test("这是在popup页面中输入的东西");
   //最终的解决办法是通过改写Ajax的函数，使其在接收一个函数作为参数，在Ajax中调用这个函数来对返回的数据进行处理
 
   tranCon.on("input", function (e) {
-    let searchText = tranCon.val();
-    translate(searchText, addToBoxDebounce);
+    let searchText = $.trim(tranCon.val());
+    // translate(searchText, addToBox);
+    if (searchText) {
+      translateDebounce(searchText, addToBox);
+    }
   })
 
-  const addToBoxDebounce = debounce(addToBox, 1000);
+  tranCon.focus();
+
+  const translateDebounce = debounce(translate, 700);
+
   function addToBox(res) {
     if (res.trans_result[0].dst) {
       console.log(res);
@@ -32,9 +38,9 @@ bg.test("这是在popup页面中输入的东西");
 
 function debounce(func, wait) {
   let timer;
-  return function (res) {
+  return function (searchText, addToBox) {
     clearTimeout(timer);
-    timer = setTimeout(func, wait, res);
+    timer = setTimeout(func, wait, searchText, addToBox);
   };
 }
 
