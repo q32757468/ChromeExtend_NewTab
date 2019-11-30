@@ -349,7 +349,10 @@ $(function () {
     $(window).click(function () {
       contextMenu.hide();
     })
-    // console.log(contextMenu.get(0));
+    $(".searchInput").contextmenu(function (e) {
+      e.stopPropagation();
+      return true;
+    })
 
 
 
