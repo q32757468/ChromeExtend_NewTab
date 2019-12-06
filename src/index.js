@@ -221,14 +221,18 @@ $(function () {
 
     // 数组
     let siteList = [
-      { 'url': 'https://www.youku.com', 'title': '优酷', 'icon': require('./assets/siteIcons/youku.png') },
-      { 'url': 'https://www.bilibili.com', 'title': 'bilibili', 'icon': require('./assets/siteIcons/bilibili.png') },
       { 'url': 'http://hemin.cn/jq/', 'title': 'jQuery中文文档', 'icon': require('./assets/siteIcons/jq.png') },
-      { 'url': 'https://www.huya.com', 'title': '虎牙', 'icon': require('./assets/siteIcons/huya.png') },
-      { 'url': 'https://www.iconfont.cn/', 'title': '阿里巴巴矢量图标库', 'icon': require('./assets/siteIcons/ali.png') },
+      { 'url': 'https://www.bilibili.com', 'title': 'bilibili', 'icon': require('./assets/siteIcons/bilibili.png') },
+      { 'url': 'https://uniapp.dcloud.io/', 'title': 'uniapp', 'icon': require('./assets/siteIcons/uniapp.png') },
       { 'url': 'https://www.douyu.com', 'title': '斗鱼', 'icon': require('./assets/siteIcons/douyu.png') },
+      { 'url': 'https://www.iconfont.cn/', 'title': '阿里巴巴矢量图标库', 'icon': require('./assets/siteIcons/ali.png') },
+      { 'url': 'https://www.youku.com', 'title': '优酷', 'icon': require('./assets/siteIcons/youku.png') },
+      { 'url': 'https://www.huya.com', 'title': '虎牙', 'icon': require('./assets/siteIcons/huya.png') },
+      { 'url': 'https://cn.vuejs.org/', 'title': 'VUE', 'icon': require('./assets/siteIcons/vue.png') },
       { 'url': 'http://www.jvtc.jx.cn', 'title': '九江职业技术学院', 'icon': require('./assets/siteIcons/jjzyjsxy.jpg') },
+      { 'url': 'https://q32757468.github.io/', 'title': '个人博客', 'icon': require('./assets/siteIcons/blog.png') },
     ]
+
 
     // 大概思路就是通过将li元素添加到ul中，然后设定一个上限，如果超过了这个上限就再新建一个ul然后向新建的这个ul中添加后续的li，超过一定数量的li再次创建ul然后继续添加
     function addToHtml() {
